@@ -8,6 +8,7 @@ import {
   Param,
   Body,
 } from '@nestjs/common';
+import { CreatePostDto } from './posts.dto';
 
 // 装饰器 posts作为请求的前缀
 @Controller('posts')
@@ -74,8 +75,14 @@ export class PostsController {
   //   }
 
   // 获取Post请求主体中的数据
-  @Post()
-  index(@Body() body) {
-    return body;
-  }
+//   @Post()
+//   index(@Body() body) {
+//     return body;
+//   }
+
+// 使用Dto限制数据的类歘
+@Post()
+index(@Body() post:CreatePostDto){
+    return post.title
+}
 }
