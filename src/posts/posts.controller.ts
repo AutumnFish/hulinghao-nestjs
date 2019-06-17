@@ -1,4 +1,24 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 
+// 装饰器 posts作为请求的前缀
 @Controller('posts')
-export class PostsController {}
+export class PostsController {
+    // 装饰器
+    @Get()
+    // 被装饰的方法
+    index(){
+        // 请求的返回值 字符串支持
+        // return '牛逼'
+        // 返回对象或者数组会被自动转化为JSON
+        return {
+            name:'jack',
+            age:18,
+            friend:[
+                {
+                    name:'rose',
+                    skill:'不怕冷'
+                }
+            ]
+        }
+    }
+}
