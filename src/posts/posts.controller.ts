@@ -22,7 +22,6 @@ export class PostsController {
   //         ]
   //     }
   // }
-
   // 获取请求的信息
   //   @Get()
   //   index(@Req() req) {
@@ -34,10 +33,15 @@ export class PostsController {
   //       ip
   //     };
   //   }
+  // 获取Get请求的所有参数
+  //   @Get()
+  //   index(@Query() query){
+  //       return query
+  //   }
 
-  // 获取Get请求的参数
+  // 获取Get请求的指定参数
   @Get()
-  index(@Query() query){
-      return query
+  index(@Query('name') name){
+      return name
   }
 }
