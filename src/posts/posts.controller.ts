@@ -47,8 +47,14 @@ export class PostsController {
   //   }
 
   // 获取请求头中的参数
-//   @Get()
-//   index(@Headers() headers) {
-//     return headers;
-//   }
+  //   @Get()
+  //   index(@Headers() headers) {
+  //     return headers;
+  //   }
+
+  // 获取请求头中的指定参数
+  @Get()
+  index(@Headers('host') host) {
+    return host;
+  }
 }
