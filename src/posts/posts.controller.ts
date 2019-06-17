@@ -1,4 +1,4 @@
-import { Controller, Get, Req } from '@nestjs/common';
+import { Controller, Get, Req, Query } from '@nestjs/common';
 
 // 装饰器 posts作为请求的前缀
 @Controller('posts')
@@ -23,15 +23,21 @@ export class PostsController {
   //     }
   // }
 
-  // 获取请求的数据
+  // 获取请求的信息
+  //   @Get()
+  //   index(@Req() req) {
+  //     const { hostname, url, method,ip } = req;
+  //     return {
+  //       hostname,
+  //       url,
+  //       method,
+  //       ip
+  //     };
+  //   }
+
+  // 获取Get请求的参数
   @Get()
-  index(@Req() req) {
-    const { hostname, url, method,ip } = req;
-    return {
-      hostname,
-      url,
-      method,
-      ip
-    };
+  index(@Query() query){
+      return query
   }
 }
