@@ -6,6 +6,7 @@ import {
   Headers,
   Post,
   Param,
+  Body,
 } from '@nestjs/common';
 
 // 装饰器 posts作为请求的前缀
@@ -67,8 +68,14 @@ export class PostsController {
   //   }
 
   // 获取Post请求数据 url中 类似于这样 /posts/10
-  @Post(':id')
-  index(@Param() param) {
-    return param;
+  //   @Post(':id')
+  //   index(@Param() param) {
+  //     return param;
+  //   }
+
+  // 获取Post请求主体中的数据
+  @Post()
+  index(@Body() body) {
+    return body;
   }
 }
