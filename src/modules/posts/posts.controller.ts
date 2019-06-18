@@ -10,14 +10,17 @@ import {
   HttpException,
   HttpStatus,
   ForbiddenException,
+  UseFilters,
 } from '@nestjs/common';
 // 导入dto
 import { CreatePostDto } from './posts.dto';
 // 导入service
 import { DemoService } from './providers/demo/demo.service';
+import { DemoFilter } from 'src/core/filters/demo.filter';
 
 // 装饰器 posts作为请求的前缀
 @Controller('posts')
+// @UseFilters(DemoFilter)
 export class PostsController {
   // 构造方法
   constructor(private readonly demoService: DemoService) {
@@ -30,6 +33,7 @@ export class PostsController {
   }
   // 使用Dto限制数据的类歘
   @Post()
+  // @UseFilters(DemoFilter)
   store(@Body() post: CreatePostDto) {
     // 添加数据
     // this.demoService.create(post )
