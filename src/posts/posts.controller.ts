@@ -8,11 +8,34 @@ import {
   Param,
   Body,
 } from '@nestjs/common';
+// 导入dto
 import { CreatePostDto } from './posts.dto';
+// 导入service
+import { DemoService } from './providers/demo/demo.service';
 
 // 装饰器 posts作为请求的前缀
 @Controller('posts')
 export class PostsController {
+  // 私有 只读
+  private readonly demoService;
+  // 构造方法
+  constructor(demoService: DemoService) {
+    // 赋值
+    this.demoService = demoService;
+  }
+
+  // 返回service中的所有数据
+  @Get()
+  index() {
+    return this.demoService.findAll();
+  }
+  // 使用Dto限制数据的类歘
+  @Post()
+  post(@Body() post: CreatePostDto) {
+    // 添加数据
+    this.demoService.create(post )
+  }
+
   // 基本使用01
   // 装饰器
   // @Get()
@@ -75,14 +98,14 @@ export class PostsController {
   //   }
 
   // 获取Post请求主体中的数据
-//   @Post()
-//   index(@Body() body) {
-//     return body;
-//   }
+  //   @Post()
+  //   index(@Body() body) {
+  //     return body;
+  //   }
 
-// 使用Dto限制数据的类歘
-@Post()
-index(@Body() post:CreatePostDto){
-    return post.title
-}
+  // 使用Dto限制数据的类歘
+  // @Post()
+  // index(@Body() post: CreatePostDto) {
+  //   return post.title;
+  // }
 }
