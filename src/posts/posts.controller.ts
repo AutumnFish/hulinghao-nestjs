@@ -16,12 +16,8 @@ import { DemoService } from './providers/demo/demo.service';
 // 装饰器 posts作为请求的前缀
 @Controller('posts')
 export class PostsController {
-  // 私有 只读
-  private readonly demoService;
   // 构造方法
-  constructor(demoService: DemoService) {
-    // 赋值
-    this.demoService = demoService;
+  constructor(private readonly demoService: DemoService) {
   }
 
   // 返回service中的所有数据
