@@ -7,6 +7,9 @@ import {
   Post,
   Param,
   Body,
+  HttpException,
+  HttpStatus,
+  ForbiddenException,
 } from '@nestjs/common';
 // 导入dto
 import { CreatePostDto } from './posts.dto';
@@ -27,9 +30,14 @@ export class PostsController {
   }
   // 使用Dto限制数据的类歘
   @Post()
-  post(@Body() post: CreatePostDto) {
+  store(@Body() post: CreatePostDto) {
     // 添加数据
-    this.demoService.create(post )
+    // this.demoService.create(post )
+    // 制造一个异常
+    // throw new HttpException('没有权限',HttpStatus.FORBIDDEN)
+    // 直接抛出一个权限异常
+    throw new ForbiddenException('没有权限哦！！！')
+
   }
 
   // 基本使用01
